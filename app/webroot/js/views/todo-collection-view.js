@@ -3,19 +3,25 @@ var app = app || {};
 //Todo一覧表示用ビュー
 (function(app) {
 	app.TodoCollectionView = Backbone.View.extend({
+		el : '#content',
+		tagName : 'div',
 		todoCollection : {},
 		initialize : function() {
-			console.log("Todo一覧表示用ビュー初期化");
-			//コレクションを生成
-			this.todoCollection = new app.TodoCollection()
+			this.todoCollection = new app.TodoCollection();
+			this.todoCollection.on('add', this.addOne, this);
+			this.$el.html($('#list-template').html());
 			this.render();
 		},
 		render : function() {
-			console.log("Todo一覧表示用ビュー表示処理");
-			//コレクションをフェッチ
-			console.log("コレクションをフェッチ");
 			this.todoCollection.fetch();
 			return this;
+		},
+
+		addOne : function(todo) {
+			var itemView = new app.TodoItemView({
+				model : todo
+			});
+			$('#todo-lists').append(itemView.render().el);
 		},
 	})
 })(app);
