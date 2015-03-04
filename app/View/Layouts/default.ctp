@@ -23,6 +23,7 @@
 
 	<!-- TODO一行分のテンプレート（上のtbody部分に挿入される） -->
 	<script type="text/template" id="item-template">
+	<td><input type="checkbox" class="toggle" <%- status === '1' ? 'checked' : '' %>></td>
 	<td style="margin:0px">
 		<span class="todo-edit" style="margin:0px"><%- todo %></span>
 	</td>
