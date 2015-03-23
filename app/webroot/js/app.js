@@ -10,5 +10,10 @@ var app = app || {};
 		onStart : function(){
 			Backbone.history.start();
 		},
+
+		regions : {
+			mainRegion : '#main'
+		}
+
 	});
 })(app);
