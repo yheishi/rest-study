@@ -1,8 +1,6 @@
-var app = app || {};
-
 //Todoデータ１件を表すモデル
-(function(app) {
-	app.TodoModel = Backbone.Model.extend({
+define(function() {
+	var TodoModel = Backbone.Model.extend({
 		urlRoot : '/rest-study/todo_lists',
 		parse : function(response) {
 			//モデルをパース
@@ -15,4 +13,5 @@ var app = app || {};
 			this.save();
 		}
 	});
-})(app);
+	return TodoModel;
+});

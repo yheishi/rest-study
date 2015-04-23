@@ -1,11 +1,11 @@
-var app = app || {};
-
 //Todo一覧表示用ビュー
-(function(app) {
-	app.TodoCompositeView = Backbone.Marionette.CompositeView.extend({
+define(function(require) {
+	var TodoItemView = require('views/todo-item-view');
+
+	var TodoCompositeView = Marionette.CompositeView.extend({
 		template: '#todo-composite-template',
 
-		childView : app.TodoItemView,
+		childView : TodoItemView,
 
 		childViewContainer : 'tbody',
 
@@ -22,7 +22,7 @@ var app = app || {};
 			_.bindAll( this, 'onCreatedSuccess' );
 		},
 
-		onCreateTodo : function(e) {
+		onCreateTodo : function() {
 			this.collection.create(this.newAttributes(), {
 		          silent:  true ,
 		          success: this.onCreatedSuccess
@@ -42,4 +42,5 @@ var app = app || {};
 		},
 
 	});
-})(app);
+	return TodoCompositeView;
+});
