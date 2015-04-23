@@ -1,10 +1,11 @@
-var app = app || {};
-
 //router
-(function(app) {
-	app.TodoRouter = Backbone.Marionette.AppRouter.extend({
+console.log('load router');
+define(function(require) {
+	console.log('run router');
+	var TodoController = require('routers/controller');
+	var TodoRouter = Marionette.AppRouter.extend({
 		//コントローラをインスタンス化
-		controller: new app.TodoController(),
+		controller: new TodoController(),
 		//ルーティング設定
 		appRoutes : {
 			'' 					: 'todoLists',
@@ -12,4 +13,5 @@ var app = app || {};
 			'todo-lists/:id' 	: 'todoDetail'
 		},
 	});
-})(app);
+	return TodoRouter;
+});

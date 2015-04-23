@@ -1,10 +1,12 @@
-var app = app || {};
-
-//開始
-(function(app) {
-	app.Application = Backbone.Marionette.Application.extend({
+//Application
+console.log('load app');
+define(function(require){
+	console.log('run app');
+	var Router = require('routers/router');
+	var Application = Marionette.Application.extend({
 		initialize : function(){
-			new app.TodoRouter();
+			console.log('app.initialize');
+			new Router();
 		},
 
 		onStart : function(){
@@ -16,4 +18,5 @@ var app = app || {};
 		}
 
 	});
-})(app);
+	return Application;
+});
