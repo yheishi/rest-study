@@ -8,9 +8,10 @@ define(function(require) {
 		controller: new TodoController(),
 		//ルーティング設定
 		appRoutes : {
-			'' 					: 'todoLists',
-			'todo-lists' 		: 'todoLists',
-			'todo-lists/:id' 	: 'todoDetail'
+			'login'             : 'login',
+			''                  : 'todoLists',
+			'todo-lists'        : 'todoLists',
+			'todo-lists/:id'    : 'todoDetail'
 		},
 	});
 	return TodoRouter;
