@@ -9,7 +9,8 @@ define(function(){
 
 		ui : {
 			checkBox : '.toggle',
-			removeLink : '.remove-link'
+			removeLink : '.remove-link',
+			detailLink : '.detail-link'
 		},
 
 		//DOMイベントハンドラ設定
@@ -30,6 +31,23 @@ define(function(){
 			});
 		},
 
+		onRender : function() {
+			if (!this.model.attributes.owned) {
+				//オーナでない場合は削除リンク非表示
+				this.ui.removeLink.css({
+					display : 'none'
+				});
+				if (!this.model.attributes.assigned) {
+					//担当者でもない場合は、
+					//詳細リンクも非表示
+					this.ui.detailLink.css({
+						display : 'none'
+					});
+					//チェックボックスも変更不可
+					this.ui.checkBox.prop('disabled', true);
+				}
+			}
+		}
 	});
 	return TodoItemView;
 });

@@ -9,7 +9,7 @@
 	<div id="header"></div>
 	<!-- コンテンツ -->
 	<div id="main"></div>
-	
+
 	<!-- ヘッダのテンプレート -->
 	<script type="text/template" id="header-template">
 	<p>ユーザ：<%- username %>（<%- name %>）　<input type="button" id="logout" value="ログアウト"></input></p>
@@ -25,10 +25,20 @@
 	<!-- TODO一覧表示のテンプレート -->
 	<script type="text/template" id="todo-composite-template">
 	<textarea style="width:300px;height:50px"id="new-todo" placeholder="Todo?" autofocus></textarea>
+	<select name="assignee" id="user-list">
 	<input type="button" id="addTodo" value="追加">
 	<hr>
 	<div>
 		<table border="1" width="350px">
+			<thead>
+				<tr>
+					<td>完了</td>
+					<td>ToDo</td>
+					<td>オーナ</td>
+					<td>担当</td>
+					<td colspan="2"></td>
+				</tr>
+			</thead>
 			<tbody></tbody>
 		</table>
 	</div>
@@ -41,7 +51,15 @@
 		<span class="todo-edit" style="margin:0px"><%- todo %></span>
 	</td>
 	<td>
+		<span><%- Owner.name %></span>
+	</td>
+	<td>
+		<span><%- Assignee.name %></span>
+	</td>
+	<td>
 		<a class="remove-link" href="#">削除</a>
+	</td>
+	<td>
 		<a class="detail-link" href="#todo-lists/<%- id %>">詳細</a>
 	</td>
 	</script>
@@ -56,6 +74,8 @@
 	<h2>Todo #<%- id %></h2>
 	<div>
 	<textarea style="width:300px;height:50px" id="edit-todo" autofocus placeholder="Todo?"><%- todo %></textarea>
+	<select name="assignee" id="user-list">
+	</select>
 	<input type="button" id="updateTodo" value="更新"></input>
 	<input type="button" id="updateCancel" value="キャンセル"></input>
 	</div>
