@@ -27,9 +27,9 @@ define(function() {
 			}
 
 			//実験！
-			if(attrs.todo !== 'hoge'){
-				errors.push('[Client]TODOは"hoge"のみ！');
-			}
+//			if(attrs.todo !== 'hoge'){
+//				errors.push('[Client]TODOは"hoge"のみ！');
+//			}
 
 			if (errors.length > 0){
 				return errors;
